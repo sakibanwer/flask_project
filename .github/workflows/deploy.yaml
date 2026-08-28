@@ -56,7 +56,7 @@ jobs:
           sed -i "s#'/static/#'static/#g" _site/index.html
 
       - name: Configure GitHub Pages
-  git remote add origin 
+  
 
 
 
