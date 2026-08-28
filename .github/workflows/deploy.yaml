@@ -3,7 +3,7 @@ name: Build and Deploy Static Website
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 permissions:
@@ -56,9 +56,13 @@ jobs:
           sed -i "s#'/static/#'static/#g" _site/index.html
 
       - name: Configure GitHub Pages
-  
+        uses: actions/configure-pages@v5
 
+      - name: Upload static website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
 
-
-
-
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
